@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="com.cranberrygame.cordova.analytics.mixpanel"
-        version="1.0.0">
+        id="com.cranberrygame.cordova.plugin.analytics.mixpanel"
+        version="1.0.1">
 
     <name>Mixpanel</name>
 
@@ -22,9 +22,7 @@
         <clobbers target="window.mixpanel"/>
     </js-module>
 
-
     <platform name="android">
-
         <!-- config.xml -->
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="Mixpanel">
@@ -45,9 +43,7 @@
         </config-file>
     </platform>
 
-
     <platform name="ios">
-
         <!-- config.xml -->
         <config-file target="config.xml" parent="/*">
             <feature name="Mixpanel">
@@ -178,12 +174,10 @@
         <source-file src="src/ios/Mixpanel/UIImage+MPImageEffects.m" />
         <source-file src="src/ios/Mixpanel/_MPTweakBindObserver.m" />
 
-
         <resource-file src="src/ios/Mixpanel/Media.xcassets" />
 
         <!-- compiler-flags="-licucore" -->
         <source-file src="src/ios/Mixpanel/libMPCategoryHelpers.a" framework="true"/>
-
 
         <!-- Mixpanel sdk requires frameworks -->
         <!--see https://github.com/mixpanel/mixpanel-iphone/blob/master/Mixpanel.podspec-->
@@ -197,6 +191,5 @@
         <framework src="QuartzCore.framework"/>
         <framework src="UIKit.framework"/>
 		<framework src="libicucore.dylib" />
-
     </platform>
 </plugin>
