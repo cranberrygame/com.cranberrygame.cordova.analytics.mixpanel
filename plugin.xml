@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="com.cranberrygame.cordova.plugin.analytics.mixpanel"
-        version="1.0.1">
+        version="1.0.2">
 
     <name>Mixpanel</name>
 
@@ -31,7 +31,7 @@
         </config-file>
 
         <!-- Plugin files -->
-        <source-file src="src/android/MixpanelPlugin.java" target-dir="src/android"/>
+        <source-file src="src/android/MixpanelPlugin.java" target-dir="src/com/samz/cordova/mixpanel"/>
         <source-file src="src/libs/mixpanel-android-4.5.3.jar" target-dir="libs/"/>
 
         <!-- manifest -->
