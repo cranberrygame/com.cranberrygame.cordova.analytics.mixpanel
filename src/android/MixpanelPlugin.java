@@ -24,10 +24,15 @@ public class MixpanelPlugin extends CordovaPlugin {
 
         FLUSH("flush"),
         IDENTIFY("identify"),
+//cranberrygame start
+        SET("set"),
+		INCREMENT("increment"),//cranberrygame
+		DELETE_USER("deleteUser"),//cranberrygame
+//cranberrygame end         
         INIT("init"),
         RESET("reset"),
         TRACK("track");
-
+       
         private final String name;
         private static final Map<String, Action> lookup = new HashMap<String, Action>();
 
@@ -50,7 +55,6 @@ public class MixpanelPlugin extends CordovaPlugin {
 
     }
 
-
     private void error(CallbackContext cbCtx, String message) {
         LOG.e(LOG_TAG, message);
         cbCtx.error(message);
@@ -61,7 +65,7 @@ public class MixpanelPlugin extends CordovaPlugin {
     public boolean execute(String action, JSONArray args, final CallbackContext cbCtx){
         // throws JSONException
         Action act = Action.get(action);
-        JSONObject properties;
+//        JSONObject properties;
 
         if (act == null){
             this.error(cbCtx, "unknown action");
@@ -92,10 +96,33 @@ public class MixpanelPlugin extends CordovaPlugin {
                     this.error(cbCtx, "missing unique id");
                     return false;
                 }
-                mixpanel.identify(uniqueId);
+                //mixpanel.identify(uniqueId);//ok//cranberrygame
+				mixpanel.getPeople().identify(uniqueId);//ok//cranberrygame
                 cbCtx.success();
                 break;
-
+//cranberrygame start
+			//http://mixpanel.github.io/mixpanel-android/com/mixpanel/android/mpmetrics/MixpanelAPI.People.html
+            case SET:
+				JSONObject properties = args.optJSONObject(0);
+                if (properties == null) {
+                    properties = new JSONObject();
+                }				
+				mixpanel.getPeople().set(properties);
+                cbCtx.success();
+                break;
+            case INCREMENT:
+				String name = args.optString(0, "");
+				int value = args.optInt(1, 1);				
+				Map<String, Integer> properties_increment = new HashMap<String, Integer>();
+				properties_increment.put(name, value);
+				mixpanel.getPeople().increment(properties_increment);
+                cbCtx.success();
+                break;
+			case DELETE_USER:
+				mixpanel.getPeople().deleteUser();
+                cbCtx.success();
+                break;
+//cranberrygame end
             case INIT:
                 String token = args.optString(0, "");
                 if (TextUtils.isEmpty(token)) {
@@ -104,7 +131,7 @@ public class MixpanelPlugin extends CordovaPlugin {
                 }
                 Context ctx = cordova.getActivity();
                 mixpanel = MixpanelAPI.getInstance(ctx, token);
-                //people = mixpanel.getPeople();
+                //people = mixpanel.getPeople();//cranberrygame
                 cbCtx.success();
                 break;
 
@@ -119,11 +146,11 @@ public class MixpanelPlugin extends CordovaPlugin {
                     this.error(cbCtx, "missing event name");
                     return false;
                 }
-                properties = args.optJSONObject(1);
-                if (properties == null) {
-                    properties = new JSONObject();
+				JSONObject properties_track = args.optJSONObject(1);
+                if (properties_track == null) {
+                    properties_track = new JSONObject();
                 }
-                mixpanel.track(event, properties);
+                mixpanel.track(event, properties_track);
                 cbCtx.success();
                 break;
 

@@ -44,6 +44,59 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
+//cranberrygame start
+
+//https://mixpanel.com/site_media/doctyl/uploads/iPhone-spec/Classes/MixpanelPeople/index.html#//apple_ref/occ/instm/MixpanelPeople/deleteUser
+-(void)set:(CDVInvokedUrlCommand*)command;
+{
+    NSDictionary* peopleProperties = [command.arguments objectAtIndex:0];
+
+    Mixpanel* mixpanelInstance = [Mixpanel sharedInstance];
+	[mixpanelInstance.people set:peopleProperties];
+	
+	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+	//[pr setKeepCallbackAsBool:YES];
+	[self.commandDelegate sendPluginResult:pr callbackId:command.callbackId];
+	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+	//[pr setKeepCallbackAsBool:YES];
+	//[self.commandDelegate sendPluginResult:pr callbackId:command.callbackId];
+}
+
+-(void)increment:(CDVInvokedUrlCommand*)command;
+{
+	NSString *name = [command.arguments objectAtIndex: 0];
+	int value = [[command.arguments objectAtIndex: 1] intValue];
+
+    //http://stackoverflow.com/questions/16292278/numbers-in-nsmutabledictionary
+	NSDictionary *properties = @{
+		name: [NSNumber numberWithInteger:value]
+	};
+			
+    Mixpanel* mixpanelInstance = [Mixpanel sharedInstance];
+	[mixpanelInstance.people increment:properties];
+		
+	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+	//[pr setKeepCallbackAsBool:YES];
+	[self.commandDelegate sendPluginResult:pr callbackId:command.callbackId];
+	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+	//[pr setKeepCallbackAsBool:YES];
+	//[self.commandDelegate sendPluginResult:pr callbackId:command.callbackId];	
+}		
+
+-(void)deleteUser:(CDVInvokedUrlCommand*)command;
+{
+    Mixpanel* mixpanelInstance = [Mixpanel sharedInstance];
+    [mixpanelInstance.people deleteUser];
+	
+	CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+	//[pr setKeepCallbackAsBool:YES];
+	[self.commandDelegate sendPluginResult:pr callbackId:command.callbackId];
+	//CDVPluginResult* pr = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+	//[pr setKeepCallbackAsBool:YES];
+	//[self.commandDelegate sendPluginResult:pr callbackId:command.callbackId];		
+}
+			
+//cranberrygame end
 
 -(void)init:(CDVInvokedUrlCommand*)command;
 {

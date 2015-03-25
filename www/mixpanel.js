@@ -20,6 +20,18 @@ mixpanel.init = function(token, onSuccess, onFail) {
   exec(onSuccess, onFail, 'Mixpanel', 'init', [token]);
 };
 
+//cranberrygame start
+mixpanel.set = function(peopleProperties, onSuccess, onFail) {
+  exec(onSuccess, onFail, 'Mixpanel', 'set', [peopleProperties]);
+};
+mixpanel.increment = function(propertyName, propertyValue, onSuccess, onFail) {
+  exec(onSuccess, onFail, 'Mixpanel', 'increment', [propertyName, propertyValue]);
+};
+mixpanel.deleteUser = function(onSuccess, onFail) {
+  exec(onSuccess, onFail, 'Mixpanel', 'deleteUser', []);
+};
+//cranberrygame end
+
 mixpanel.reset = function(onSuccess, onFail) {
   exec(onSuccess, onFail, 'Mixpanel', 'reset', []);
 };
