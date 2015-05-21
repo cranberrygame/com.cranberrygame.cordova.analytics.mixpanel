@@ -1,49 +1,97 @@
+Cordova Mixpanel plugin
+====================
+# Overview #
+mixpanel analytics
 
-### Cordova Plugin that wraps Mixpanel sdk for android and ios
+[android, ios] [crodova cli] [xdk]
 
-- android sdk version 4.5.3
-- ios sdk version 2.7.2
+Requires mixpanel account http://www.mixpanel.com/
 
+Fix "error: use of undeclared identifier '_serialQueue'" xdk build error issue:
+CORDOVA 3.X HYBRID MOBILE APP SETTINGS - Build Settings - set iOS Target Version: 6
+
+This is open source cordova plugin.
+
+You can see Plugins For Cordova in one page: http://cranberrygame.github.io?referrer=github
+
+# Change log #
+```c
 ```
-cordova plugin add https://github.com/samzilverberg/cordova-mixpanel-plugin.git
+# Install plugin #
+
+## Cordova cli ##
+```c
+cordova plugin add com.cranberrygame.cordova.plugin.analytics.mixpanel
 ```
 
-#### Usage
+## Xdk ##
+```c
+XDK PORJECTS - your_xdk_project - CORDOVA 3.X HYBRID MOBILE APP SETTINGS - PLUGINS AND PERMISSIONS - Third Party Plugins - Add a Third Party Plugin - Get Plugin from the Web -
 
-window.mixpanel:
-
-- .flush(onSuccess, onFail)
-- .identify(distinctId, onSuccess, onFail)
-- .init(token, onSuccess, onFail)
-- .reset(onSuccess, onFail)
-- .track(eventName, eventProperties, onSuccess, onFail)
-
-### TODO in near future
-
-- add basic Mixpanel People operations
-- add .alias(alias, originalId) (also 'createAlias')
-
-
-
-## Troubleshooting
-
-### IOS
-
-#### hey i installed the plugin and now build fails, why?
-
-open your xcode proj, goto build phases -> link binary with libraries:
-  - drag all files under folder 'frameworks' (on the left) to here
-  - add these two:
-      - libicucore
-      - cfnetwork
-
-#### i get error 'Mixpanel' plugin not found, check config.xml
-
-appears to be some problem of the xcode proj settings.
-only working solution i found so far is to
+Name: revmob
+Plugin ID: com.cranberrygame.cordova.plugin.analytics.mixpanel
+[v] Plugin is located in the Apache Cordova Plugins Registry
 ```
-cordova platform remove ios
-cordova platform add ios
-cordova build ios
+
+## Phonegap build service (config.xml) ##
+```c
+<gap:plugin name="com.cranberrygame.cordova.plugin.analytics.mixpanel" source="plugins.cordova.io" />
 ```
-and setting up the build phase correctly again.
+
+## Construct2 ##
+Download construct2 plugin: https://dl.dropboxusercontent.com/u/186681453/pluginsforcordova/mixpanel/construct2.html
+<br>
+Now all the native plugins are installed automatically: https://plus.google.com/102658703990850475314/posts/XS5jjEApJYV
+# Server setting #
+```c
+```
+
+<img src="https://github.com/cranberrygame/cordova-plugin-analytics-mixpanel/blob/master/doc/token.png"><br>
+<img src="https://github.com/cranberrygame/cordova-plugin-analytics-mixpanel/blob/master/doc/mixpanel_bookmark.png"><br>
+
+# API #
+```javascript
+var token = "REPLACE_THIS_WITH_YOUR_TOKEN";
+
+/*
+var token;
+//android
+if (navigator.userAgent.match(/Android/i)) {
+	token = "REPLACE_THIS_WITH_YOUR_TOKEN";
+}
+//ios
+else if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+	token = "REPLACE_THIS_WITH_YOUR_TOKEN";
+}
+*/
+
+window.mixpanel.setUp(token);			
+
+//
+window.mixpanel.trackEvent(eventName);
+window.mixpanel.addEventProperty(propertyName, propertyValue);
+
+//
+window.mixpanel.identifyPeople(distinctId);
+window.mixpanel.addPeopleProperty(propertyName, propertyValue);
+window.mixpanel.changePeopleProperties();
+window.mixpanel.incrementPeopleProperty(propertyName, propertyValue);
+window.mixpanel.deletePeople();
+			
+```
+# Examples #
+<a href="https://github.com/cranberrygame/cordova-plugin-analytics-mixpanel/blob/master/example/basic/index.html">example/basic/index.html</a><br>
+
+# Test #
+
+You can also run following test apk.
+https://dl.dropboxusercontent.com/u/186681453/pluginsforcordova/mixpanel/apk.html
+
+# Useful links #
+
+Plugins For Cordova<br>
+http://cranberrygame.github.io?referrer=github
+
+# Credits #
+
+https://github.com/samzilverberg/cordova-mixpanel-plugin

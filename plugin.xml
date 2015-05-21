@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        id="com.cranberrygame.cordova.plugin.analytics.mixpanel"
-        version="1.0.4">
-
-    <name>Mixpanel</name>
-
-    <description>
-        Mixpanel Cordova Plugin for iOS and Android
-    </description>
-
-    <repo>https://github.com/samzilverberg/mixpanel-cordova.git</repo>
-    <author>Sam Zilverberg</author>
-    <keywords>mixpanel, cordova, phonegap, ionic, plugin, ios, android</keywords>
-
-    <engines>
-        <engine name="cordova" version=">=3.0.0"/>
-    </engines>
-
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.cranberrygame.cordova.plugin.analytics.mixpanel"
+    version="1.0.5">
+	
+    <name>Cordova Mixpanel plugin</name>
+    <description>Mixpanel analytics</description>
+    <author>Sang Ki Kwon (Cranberrygame)</author>		
+    <license>MIT</license>
+    <keywords>cordova,plugin,analytics,mixpanel</keywords>
+    <repo>https://github.com/cranberrygame/cordova-plugin-analytics-mixpanel</repo>
+    <issue>https://github.com/cranberrygame/cordova-plugin-analytics-mixpanel/issues</issue> 	
+	<engines>
+	    <engine name="cordova" version=">=3.0.0" />
+	</engines>	
+		
     <js-module src="www/mixpanel.js">
         <clobbers target="window.mixpanel"/>
     </js-module>
@@ -26,12 +23,12 @@
         <!-- config.xml -->
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="Mixpanel">
-                <param name="android-package" value="com.samz.cordova.mixpanel.MixpanelPlugin"/>
+                <param name="android-package" value="com.cranberrygame.cordova.plugin.mixpanel.MixpanelPlugin"/>
             </feature>
         </config-file>
 
         <!-- Plugin files -->
-        <source-file src="src/android/MixpanelPlugin.java" target-dir="src/com/samz/cordova/mixpanel"/>
+        <source-file src="src/android/MixpanelPlugin.java" target-dir="src/com/cranberrygame/cordova/plugin/mixpanel"/>
         <source-file src="src/android/mixpanel-android-4.5.3.jar" target-dir="libs/"/>
 
         <!-- manifest -->

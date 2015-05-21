@@ -4,21 +4,22 @@
 
 
 @interface MixpanelPlugin : CDVPlugin
-{
-// empty
-}
 
 //@see https://mixpanel.com/site_media/doctyl/uploads/iPhone-spec/Classes/Mixpanel/index.html
+-(void) setUp:(CDVInvokedUrlCommand*)command;
+//addEventProperty
+-(void) trackEvent:(CDVInvokedUrlCommand*)command;
+-(void) identifyPeople:(CDVInvokedUrlCommand*)command;
+//addPeopleProperty
+-(void) changePeopleProperties:(CDVInvokedUrlCommand*)command;
+-(void) incrementPeopleProperty:(CDVInvokedUrlCommand*)command;
+-(void) deletePeople:(CDVInvokedUrlCommand*)command;
+/*
 -(void)flush:(CDVInvokedUrlCommand*)command;
--(void)identify:(CDVInvokedUrlCommand*)command;
-//cranberrygame start
--(void)set:(CDVInvokedUrlCommand*)command;
--(void)increment:(CDVInvokedUrlCommand*)command;
--(void)deleteUser:(CDVInvokedUrlCommand*)command;
-//cranberrygame end
--(void)init:(CDVInvokedUrlCommand*)command;
+*/
+/*
 -(void)reset:(CDVInvokedUrlCommand*)command;
--(void)track:(CDVInvokedUrlCommand*)command;
+*/
 
 @end
 
