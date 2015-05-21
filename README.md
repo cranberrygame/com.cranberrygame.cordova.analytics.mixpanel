@@ -39,9 +39,7 @@ Plugin ID: com.cranberrygame.cordova.plugin.analytics.mixpanel
 ```
 
 ## Construct2 ##
-Download construct2 plugin: https://dl.dropboxusercontent.com/u/186681453/pluginsforcordova/mixpanel/construct2.html
-<br>
-Now all the native plugins are installed automatically: https://plus.google.com/102658703990850475314/posts/XS5jjEApJYV
+
 # Server setting #
 ```c
 ```
@@ -52,7 +50,6 @@ Now all the native plugins are installed automatically: https://plus.google.com/
 # API #
 ```javascript
 var token = "REPLACE_THIS_WITH_YOUR_TOKEN";
-
 /*
 var token;
 //android
@@ -65,7 +62,9 @@ else if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad
 }
 */
 
-window.mixpanel.setUp(token);			
+document.addEventListener("deviceready", function(){
+    window.mixpanel.setUp(token);
+}, false);
 
 //
 window.mixpanel.trackEvent(eventName);
