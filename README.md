@@ -95,7 +95,7 @@ window.mixpanelanalytics.deletePeople();
 # Test #
 
 You can also run following test apk.
-https://dl.dropboxusercontent.com/u/186681453/pluginsforcordova/mixpanel/apk.html
+https://dl.dropboxusercontent.com/u/186681453/pluginsforcordova/mixpanelanalytics/apk.html
 
 # Useful links #
 
