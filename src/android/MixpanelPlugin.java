@@ -1,4 +1,4 @@
-package com.cranberrygame.cordova.plugin.mixpanel;
+package com.cranberrygame.cordova.plugin.mixpanelanalytics;
 
 import android.content.Context;
 import android.text.TextUtils;

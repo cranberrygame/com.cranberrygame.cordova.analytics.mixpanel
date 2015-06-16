@@ -1,5 +1,5 @@
 
-var mixpanel = {
+var mixpanelanalytics = {
 	eventProperties: {},
 	peopleProperties: {},	
 	setUp: function(token) {
@@ -42,7 +42,7 @@ var mixpanel = {
 			function (error) {
 				console.log('setUp failed.');
 			},
-            'Mixpanel',
+            'MixpanelAnalytics',
             'setUp',			
 			[token]
         ); 
@@ -56,7 +56,7 @@ var mixpanel = {
         cordova.exec(
 			null,
             null,
-            'Mixpanel',
+            'MixpanelAnalytics',
             'trackEvent',
             [eventName, this.eventProperties]
         );
@@ -67,7 +67,7 @@ var mixpanel = {
         cordova.exec(
 			null,
             null,
-            'Mixpanel',
+            'MixpanelAnalytics',
             'identifyPeople',
             [distinctId]
         );
@@ -83,7 +83,7 @@ var mixpanel = {
         cordova.exec(
 			null,
             null,
-            'Mixpanel',
+            'MixpanelAnalytics',
             'changePeopleProperties',
             [this.peopleProperties]
         );
@@ -93,7 +93,7 @@ var mixpanel = {
         cordova.exec(
 			null,
             null,
-            'Mixpanel',
+            'MixpanelAnalytics',
             'incrementPeopleProperty',
             [propertyName, propertyValue]
         );
@@ -102,11 +102,11 @@ var mixpanel = {
         cordova.exec(
 			null,
             null,
-            'Mixpanel',
+            'MixpanelAnalytics',
             'deletePeople',
             []
         );
     }
 }
 
-module.exports = mixpanel;
+module.exports = mixpanelanalytics;

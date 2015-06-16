@@ -1,9 +1,9 @@
-Cordova Mixpanel plugin
+Cordova MixpanelAnalytics plugin
 ====================
 # Overview #
 mixpanel analytics
 
-[android, ios] [crodova cli] [xdk]
+[android, ios] [crodova cli] [xdk] [cocoon]
 
 Requires mixpanel account http://www.mixpanel.com/
 
@@ -20,36 +20,38 @@ You can see Plugins For Cordova in one page: http://cranberrygame.github.io?refe
 # Install plugin #
 
 ## Cordova cli ##
-https://cordova.apache.org/docs/en/edge/guide_cli_index.md.html#The%20Command-Line%20Interface - npm install -g cordova@4.1.2
+https://cordova.apache.org/docs/en/edge/guide_cli_index.md.html#The%20Command-Line%20Interface - npm install -g cordova@5.0.0
 ```c
-cordova plugin add com.cranberrygame.cordova.plugin.analytics.mixpanel
+cordova plugin add cordova-plugin-analytics-mixpanelanalytics
 ```
 
 ## Xdk ##
 https://software.intel.com/en-us/intel-xdk - Download XDK - XDK PORJECTS - [specific project] - CORDOVA 3.X HYBRID MOBILE APP SETTINGS - PLUGINS - Third Party Plugins - Add a Third Party Plugin - Get Plugin from the Web -
 ```c
-Name: mixpanel
-Plugin ID: com.cranberrygame.cordova.plugin.analytics.mixpanel
+Name: cordova-plugin-analytics-mixpanelanalytics
+Plugin ID: com.cranberrygame.cordova.plugin.analytics.mixpanelanalytics
 [v] Plugin is located in the Apache Cordova Plugins Registry
 ```
 
 ## Cocoon ##
-https://cocoon.io - Create project - [specific project] - Setting - Plugins - Search - cranberrygame - mixpanel
+https://cocoon.io - Create project - [specific project] - Setting - Plugins - Custom - Git Url: https://github.com/cranberrygame/cordova-plugin-analytics-mixpanelanalytics.git - INSTALL - Save
 
 ## Phonegap build service (config.xml) ##
 https://build.phonegap.com/ - Apps - [specific project] - Update code - Zip file including config.xml
 ```c
-<gap:plugin name="com.cranberrygame.cordova.plugin.analytics.mixpanel" source="plugins.cordova.io" />
+<gap:plugin name="cordova-plugin-analytics-mixpanelanalytics." source="npm" />
 ```
 
 ## Construct2 ##
 
 # Server setting #
 ```c
+//Mixpanel token
+Mixpanel login - [your project] - click down left setting icon ("Update project settings") - Token
 ```
 
-<img src="https://github.com/cranberrygame/cordova-plugin-analytics-mixpanel/blob/master/doc/token.png"><br>
-<img src="https://github.com/cranberrygame/cordova-plugin-analytics-mixpanel/blob/master/doc/mixpanel_bookmark.png"><br>
+<img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-analytics-mixpanelanalytics/master/doc/token.png"><br>
+<img src="https://raw.githubusercontent.com/cranberrygame/cordova-plugin-analytics-mixpanelanalytics/master/doc/mixpanel_bookmark.png"><br>
 
 # API #
 ```javascript
@@ -67,23 +69,28 @@ else if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad
 */
 
 document.addEventListener("deviceready", function(){
-    window.mixpanel.setUp(token);
+    window.mixpanelanalytics.setUp(token);
 }, false);
 
 //
-window.mixpanel.trackEvent(eventName);
-window.mixpanel.addEventProperty(propertyName, propertyValue);
+window.mixpanelanalytics.trackEvent(eventName);//As for ios, analytics data will be sent to mixpanel server not directly but after app goes into back ground state.
 
 //
-window.mixpanel.identifyPeople(distinctId);
-window.mixpanel.addPeopleProperty(propertyName, propertyValue);
-window.mixpanel.changePeopleProperties();
-window.mixpanel.incrementPeopleProperty(propertyName, propertyValue);
-window.mixpanel.deletePeople();
+window.mixpanelanalytics.addEventProperty(propertyName, propertyValue);
+window.mixpanelanalytics.trackEvent(eventName);
+
+//
+window.mixpanelanalytics.identifyPeople(distinctId);
+window.mixpanelanalytics.addPeopleProperty(propertyName, propertyValue);
+window.mixpanelanalytics.changePeopleProperties();
+window.mixpanelanalytics.incrementPeopleProperty(propertyName, propertyValue);
+window.mixpanelanalytics.deletePeople();
 			
 ```
 # Examples #
-<a href="https://github.com/cranberrygame/cordova-plugin-analytics-mixpanel/blob/master/example/basic/index.html">example/basic/index.html</a><br>
+<a href="https://github.com/cranberrygame/cordova-plugin-analytics-mixpanelanalytics/blob/master/example/basic/index.html">example/basic/index.html</a><br>
+<a href="https://github.com/cranberrygame/cordova-plugin-analytics-mixpanelanalytics/blob/master/example/advanced_event_property/index.html">example/advanced_event_property/index.html</a><br>
+<a href="https://github.com/cranberrygame/cordova-plugin-analytics-mixpanelanalytics/blob/master/example/advanced_people/index.html">example/advanced_people/index.html</a><br>
 
 # Test #
 
