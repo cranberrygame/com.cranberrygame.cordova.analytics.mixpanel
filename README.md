@@ -3,7 +3,7 @@ Cordova MixpanelAnalytics plugin
 # Overview #
 mixpanel analytics
 
-[android, ios] [crodova cli] [xdk] [cocoon]
+[android, ios] [crodova cli] [xdk] [cocoon] [phonegap build service]
 
 Requires mixpanel account http://www.mixpanel.com/
 
@@ -12,7 +12,7 @@ CORDOVA 3.X HYBRID MOBILE APP SETTINGS - Build Settings - set iOS Target Version
 
 This is open source cordova plugin.
 
-You can see Plugins For Cordova in one page: http://cranberrygame.github.io?referrer=github
+You can see Cordova Plugins in one page: http://cranberrygame.github.io?referrer=github
 
 # Change log #
 ```c
@@ -20,17 +20,16 @@ You can see Plugins For Cordova in one page: http://cranberrygame.github.io?refe
 # Install plugin #
 
 ## Cordova cli ##
-https://cordova.apache.org/docs/en/edge/guide_cli_index.md.html#The%20Command-Line%20Interface - npm install -g cordova@5.0.0
+https://cordova.apache.org/docs/en/edge/guide_cli_index.md.html#The%20Command-Line%20Interface - npm install -g cordova@6.0.0
 ```c
 cordova plugin add cordova-plugin-analytics-mixpanelanalytics
 ```
 
 ## Xdk ##
-https://software.intel.com/en-us/intel-xdk - Download XDK - XDK PORJECTS - [specific project] - CORDOVA 3.X HYBRID MOBILE APP SETTINGS - PLUGINS - Third Party Plugins - Add a Third Party Plugin - Get Plugin from the Web -
+https://software.intel.com/en-us/intel-xdk - Download XDK - XDK PORJECTS - [specific project] - CORDOVA HYBRID MOBILE APP SETTINGS - Plugin Management - Add Plugins to this Project - Third Party Plugins -
 ```c
-Name: cordova-plugin-analytics-mixpanelanalytics
-Plugin ID: com.cranberrygame.cordova.plugin.analytics.mixpanelanalytics
-[v] Plugin is located in the Apache Cordova Plugins Registry
+Plugin Source: Cordova plugin registry
+Plugin ID: cordova-plugin-analytics-mixpanelanalytics
 ```
 
 ## Cocoon ##
@@ -99,7 +98,7 @@ https://dl.dropboxusercontent.com/u/186681453/pluginsforcordova/mixpanelanalytic
 
 # Useful links #
 
-Plugins For Cordova<br>
+Cordova Plugins<br>
 http://cranberrygame.github.io?referrer=github
 
 # Credits #
